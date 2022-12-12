@@ -13,7 +13,16 @@ namespace ApacheOpenOfficeDownloader.Modules.CultureWorker
         /// </summary>
         public static TableInfo FindCultureData(IEnumerable<TableInfo> tableInfos, CultureInfo cultureInfo)
         {
-            return tableInfos.FirstOrDefault(info => CultureComparator.Compare(info.Name, cultureInfo));
+            //Compare by culture
+            var folger = tableInfos.FirstOrDefault(info => CultureComparator.Compare(info.Name, cultureInfo));
+
+            //If can`t find folger, then search by parent culture
+            if(folger == null)
+            {
+                folger = tableInfos.FirstOrDefault(info => CultureComparator.CompareByParent(info.Name, cultureInfo));
+            }
+
+            return folger;
         }
     }
 }

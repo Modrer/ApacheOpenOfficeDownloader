@@ -12,30 +12,10 @@ namespace ApacheOpenOfficeDownloader.Modules.CultureWorker
         /// </summary>
         public static bool Compare(string firstCulture, CultureInfo secondCulture)
         {
-            return CultureInfo
-                .CreateSpecificCulture(firstCulture)
-                .Equals(
-                CultureInfo.CreateSpecificCulture(secondCulture.Name)
-                );
-
-        }
-        /// <summary>
-        /// Compare 2 cultures, parse second to CultureInfo class
-        /// </summary>
-        public static bool Compare(CultureInfo firstCulture, string secondCulture)
-        {
-            return Compare(secondCulture, firstCulture);
-
-        }
-        /// <summary>
-        /// Compare 2 cultures
-        /// </summary>
-        public static bool Compare(string firstCulture, string secondCulture)
-        {
-            return CultureInfo
-                .CreateSpecificCulture(firstCulture)
-                .Equals(
-                CultureInfo.CreateSpecificCulture(secondCulture)
+            //Compare 2 cultures
+            return Compare(CultureInfo
+                .CreateSpecificCulture(firstCulture),
+                secondCulture
                 );
 
         }
@@ -44,12 +24,34 @@ namespace ApacheOpenOfficeDownloader.Modules.CultureWorker
         /// </summary>
         public static bool Compare(CultureInfo firstCulture, CultureInfo secondCulture)
         {
-            return CultureInfo
-                .CreateSpecificCulture(firstCulture.Name)
+            return firstCulture
                 .Equals(
-                CultureInfo.CreateSpecificCulture(secondCulture.Name)
+                secondCulture
                 );
 
         }
+        /// <summary>
+        /// Compare 2 cultures, parse to specific CultureInfo and then compare 2 culture by parent
+        /// </summary>
+        public static bool CompareByParent(string firstCulture, CultureInfo secondCulture)
+        {
+            return Compare(
+                CultureInfo.CreateSpecificCulture(firstCulture).Parent,
+                CultureInfo.CreateSpecificCulture(secondCulture.Name).Parent
+                );
+
+        }
+        /// <summary>
+        /// Compare 2 cultures, parse to specific CultureInfo and then compare 2 culture by parent
+        /// </summary>
+        public static bool CompareByParent(CultureInfo firstCulture, CultureInfo secondCulture)
+        {
+            return Compare(
+                CultureInfo.CreateSpecificCulture(firstCulture.Name).Parent,
+                CultureInfo.CreateSpecificCulture(secondCulture.Name).Parent
+                );
+
+        }
+
     }
 }

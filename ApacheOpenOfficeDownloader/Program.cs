@@ -10,6 +10,7 @@ namespace ApacheOpenOfficeDownloader
     {
         static void Main(string[] args)
         {
+            
             //Load default settings
             ConsoleArguments consoleArguments = new ConsoleArguments
             {
@@ -60,6 +61,8 @@ namespace ApacheOpenOfficeDownloader
             }
             //Dovnload file
             OpenOfficeDownloader.Download(consoleArguments);
+
+            
         }
     }
 }
