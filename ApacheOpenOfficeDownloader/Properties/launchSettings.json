@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ApacheOpenOfficeDownloader": {
+      "commandName": "Project",
+      "commandLineArgs": "-forse-version:4.1.11 -forse-folger:C:\\Users\\DanPC\\Downloads -forse-filename:Office.exe -forse-language:ru"
+    }
+  }
+}
